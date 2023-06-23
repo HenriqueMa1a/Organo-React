@@ -1,6 +1,6 @@
 import './FieldText.css'
 
-const FielText = (props) => {
+const FieldText = (props) => {
   return (
     <div className="field-text">
       <label>{props.label}</label>
@@ -9,4 +9,4 @@ const FielText = (props) => {
   );
 };
 
-export default FielText;
+export default FieldText;
