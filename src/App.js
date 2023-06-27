@@ -52,6 +52,7 @@ function App(props) {
           nome={team.nome}
           primaryColor={team.primaryColor}
           secondaryColor={team.secondaryColor}
+          collaborators = {collaborators.filter(collaborator => collaborator.team === team.nome)}
         />
       ))}
     </div>

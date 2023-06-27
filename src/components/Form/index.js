@@ -22,6 +22,10 @@ const Form = (props) => {
       team
     }
     props.dataCollaborator(data)
+    setNome('')
+    setCargo('')
+    setImagem('')
+    setTeam('')
   };
 
   return (
