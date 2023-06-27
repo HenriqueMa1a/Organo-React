@@ -1,0 +1,7 @@
+.footer {
+    align-items: center;
+    background: url('../../../public/images/fundo.png')  #6278f7  ;
+    display: flex;
+    justify-content: space-around;
+    padding: 48px;
+}

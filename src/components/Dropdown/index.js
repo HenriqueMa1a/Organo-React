@@ -4,6 +4,7 @@ const Dropdown = (props) => {
     <div className="dropdown">
       <label>{props.label}</label>
       <select required={props.mandatory} onChange={e=>props.modifier(e.target.value)} value={props.fieldValue}>
+        <option value=""></option>
         {props.teams.map((team) => (
           <option key={team}>
             {team}
@@ -14,4 +15,4 @@ const Dropdown = (props) => {
   );
 };
 
-export default Dropdown;
+export default Dropdown; 
