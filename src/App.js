@@ -4,40 +4,47 @@ import Form from "./components/Form";
 import Team from "./components/Team";
 import Footer from "./components/Footer";
 function App(props) {
-  const teams = [
+  const [teams, setTeams] = useState([
     {
       nome: "CEO",
-      primaryColor: "#57c278",
-      secondaryColor: "#d9f7e9",
+      color: "#57c278",
     },
     {
       nome: "Diretor",
-      primaryColor: "#82cffa",
-      secondaryColor: "#e8f8ff",
+      color: "#82cffa",
     },
     {
       nome: "Gerente",
-      primaryColor: "#a6d157",
-      secondaryColor: "#f0f8e2",
+      color: "#a6d157",
     },
     {
       nome: "Funcionário",
-      primaryColor: "#e06b69",
-      secondaryColor: "#fde7e8",
+      color: "#e06b69",
     },
     {
       nome: "Estagiário",
-      primaryColor: "#db6ebf",
-      secondaryColor: "#fae9f5",
+      color: "#db6ebf",
     },
-  ];
+  ]);
 
   const [collaborators, setCollaborators] = useState([]);
+  const deletarColaborador = ()=>{
+    console.log('deletando colaborador')
+  }
 
   const newCollaborator = (collaborator) => {
     console.log(collaborator);
     setCollaborators([...collaborators, collaborator]);
   };
+
+  const mudarCorDoTime = (cor, nomeDoTime) =>{
+    setTeams(teams.map(team => {
+      if(team.nome === nomeDoTime){
+          team.color = cor
+      }
+      return team
+    }))
+  }
 
   return (
     <div className="App">
@@ -49,11 +56,12 @@ function App(props) {
 
       {teams.map((team) => (
         <Team
+          mudarCor={mudarCorDoTime}
           key={team.nome}
           nome={team.nome}
-          primaryColor={team.primaryColor}
-          secondaryColor={team.secondaryColor}
+          color={team.color}
           collaborators = {collaborators.filter(collaborator => collaborator.team === team.nome)}
+          aoDeletar={deletarColaborador}
         />
       ))}
       <Footer/>
