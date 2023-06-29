@@ -1,6 +1,7 @@
 import "./Form.css";
 import FieldText from "../FieldText";
 import Dropdown from "../Dropdown";
+import { v4 as uuidv4 } from 'uuid';
 import Btn from "../Btn";
 import { useState } from "react";
 
@@ -14,12 +15,12 @@ const Form = (props) => {
 
   const bySaving = (e) => {
     e.preventDefault();
-    console.log("Formulário submetido =>", nome, cargo, imagem, team);
     const data = {
       nome,
       cargo,
       imagem,
-      team
+      team,
+      id: uuidv4()
     }
     props.dataCollaborator(data)
     setNome('')

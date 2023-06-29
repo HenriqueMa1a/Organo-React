@@ -3,47 +3,56 @@ import Banner from "./components/Banner";
 import Form from "./components/Form";
 import Team from "./components/Team";
 import Footer from "./components/Footer";
+import { v4 as uuidv4 } from 'uuid';
+
 function App(props) {
   const [teams, setTeams] = useState([
     {
+      idColor: uuidv4(),
       nome: "CEO",
       color: "#57c278",
     },
     {
+      idColor: uuidv4(),
       nome: "Diretor",
       color: "#82cffa",
     },
     {
+      idColor: uuidv4(),
       nome: "Gerente",
       color: "#a6d157",
     },
     {
+      idColor: uuidv4(),
       nome: "Funcionário",
       color: "#e06b69",
     },
     {
+      idColor: uuidv4(),
       nome: "Estagiário",
       color: "#db6ebf",
     },
   ]);
 
   const [collaborators, setCollaborators] = useState([]);
-  const deletarColaborador = ()=>{
-    console.log('deletando colaborador')
-  }
+
 
   const newCollaborator = (collaborator) => {
     console.log(collaborator);
     setCollaborators([...collaborators, collaborator]);
   };
 
-  const mudarCorDoTime = (cor, nomeDoTime) =>{
+  const mudarCorDoTime = (cor, id) =>{
     setTeams(teams.map(team => {
-      if(team.nome === nomeDoTime){
+      if(team.idColor === id){
           team.color = cor
       }
       return team
     }))
+  }
+
+  const deletarColaborador = (id)=>{
+    setCollaborators(collaborators.filter(collaborator => collaborator.id !==id))
   }
 
   return (
@@ -57,6 +66,7 @@ function App(props) {
       {teams.map((team) => (
         <Team
           mudarCor={mudarCorDoTime}
+          idColor = {team.idColor}
           key={team.nome}
           nome={team.nome}
           color={team.color}
