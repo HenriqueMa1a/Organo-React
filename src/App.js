@@ -61,6 +61,17 @@ function App(props) {
     );
   };
 
+  const resolverFavorito = (id) => {
+    setCollaborators(
+      collaborators.map((collaborator) => {
+        if (collaborator.id === id) {
+          collaborator.favorito = !collaborator.favorito;
+        }
+        return collaborator;
+      })
+    );
+  };
+
   return (
     <div className="App">
       <Banner />
@@ -81,6 +92,7 @@ function App(props) {
             (collaborator) => collaborator.team === team.nome
           )}
           aoDeletar={deletarColaborador}
+          aoFavoritar={resolverFavorito}
         />
       ))}
       <Footer />
