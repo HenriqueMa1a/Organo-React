@@ -1,5 +1,5 @@
 import "./Form.css";
-import FieldText from "../FieldText";
+import Field from "../Field";
 import Dropdown from "../Dropdown";
 import { v4 as uuidv4 } from 'uuid';
 import Btn from "../Btn";
@@ -37,21 +37,21 @@ const Form = (props) => {
 
       <form onSubmit={bySaving}>
         <h2>Preencha os dados para criar o card do colaborador</h2>
-        <FieldText
+        <Field
           mandatory={true}
           label="Nome"
           placeholder="Digite seu nome"
           fieldValue={nome}
           modifier={(fieldValue) => setNome(fieldValue)}
         />
-        <FieldText
+        <Field
           mandatory={true}
           label="Cargo"
           placeholder="Digite seu cargo"
           fieldValue={cargo}
           modifier={(fieldValue) => setCargo(fieldValue)}
         />
-        <FieldText
+        <Field
           label="Imagem"
           placeholder="Digite o endereço da imagem"
           fieldValue={imagem}
@@ -76,18 +76,18 @@ const Form = (props) => {
         const nome = nomeTime
         const color = corTime
         props.dataTeams({nome, color})
-        
       }}>
         <h2>Preencha os dados para criar um time</h2>
-        <FieldText
+        <Field
           mandatory
           label="Nome"
           placeholder="Digite o nome do time"
           fieldValue={nomeTime}
           modifier={(fieldValue) => setNomeTime(fieldValue)}
         />
-        <FieldText
+        <Field
           mandatory
+          type="color"
           label="Cor"
           placeholder="Digite a cor do time"
           fieldValue={corTime}
