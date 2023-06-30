@@ -12,6 +12,8 @@ const Form = (props) => {
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
   const [team, setTeam] = useState("");
+  const [nomeTime, setNomeTime] = useState("");
+  const [corTime, setCorTime] = useState("");
 
   const bySaving = (e) => {
     e.preventDefault();
@@ -20,7 +22,7 @@ const Form = (props) => {
       cargo,
       imagem,
       team,
-      id: uuidv4()
+      id: uuidv4
     }
     props.dataCollaborator(data)
     setNome('')
@@ -31,6 +33,8 @@ const Form = (props) => {
 
   return (
     <section className="form-section">
+{/* Formulário para o cadastro de cards */}
+
       <form onSubmit={bySaving}>
         <h2>Preencha os dados para criar o card do colaborador</h2>
         <FieldText
@@ -63,6 +67,35 @@ const Form = (props) => {
 
         {/* <Btn BtnText="Criar Card"/> */}
         <Btn>Criar Card</Btn>
+      </form>
+
+{/* Formulário para o cadastro de times */}
+
+      <form onSubmit={e=>{
+        e.preventDefault();
+        const nome = nomeTime
+        const color = corTime
+        props.dataTeams({nome, color})
+        
+      }}>
+        <h2>Preencha os dados para criar um time</h2>
+        <FieldText
+          mandatory
+          label="Nome"
+          placeholder="Digite o nome do time"
+          fieldValue={nomeTime}
+          modifier={(fieldValue) => setNomeTime(fieldValue)}
+        />
+        <FieldText
+          mandatory
+          label="Cor"
+          placeholder="Digite a cor do time"
+          fieldValue={corTime}
+          modifier={(fieldValue) => setCorTime(fieldValue)}
+        />
+
+        {/* <Btn BtnText="Criar Card"/> */}
+        <Btn>Criar um novo time</Btn>
       </form>
     </section>
   );
