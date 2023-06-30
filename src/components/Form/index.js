@@ -22,7 +22,7 @@ const Form = (props) => {
       cargo,
       imagem,
       team,
-      id: uuidv4,
+      id: uuidv4(),
       favorito: false,
     }
     props.dataCollaborator(data)
