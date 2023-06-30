@@ -77,6 +77,8 @@ const Form = (props) => {
         const nome = nomeTime
         const color = corTime
         props.dataTeams({nome, color})
+        setCorTime("")
+        setNomeTime("")
       }}>
         <h2>Preencha os dados para criar um time</h2>
         <Field
